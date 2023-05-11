@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+            height: 100vh;
+            padding: 20px;
+            color: rgba(8, 247, 254, 0.5); /* Texto semi-transparente */
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            color: #08f7fe;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 2.0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background: #1a1a1a;
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+        nav a {
+            color: #08f7fe;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .highlight {
+            color: #08f7fe;
+            text-shadow: 0 0 5px #08f7fe, 0 0 10px #08f7fe, 0 0 15px #08f7fe, 0 0 20px #08f7fe;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="reminders.html" class="nav-link">Reminders</a>
+        <a href="probando-cosas.html" class="nav-link">Testing Grounds</a>
+    </nav>
+
+    <header style="color: rgba(0, 0, 0, 0.5);">Encabezado</header>
+    <header style="color: rgba(0, 0, 0, 0.5);">Encabezado</header>
+    <header style="color: rgba(0, 0, 0, 0.5);">Encabezado</header>
+    <header style="color: rgba(0, 0, 0, 0.5);">Encabezado</header>
+    <header style="color: #08f7fe;">Love Letter</header>
+
+
+    <p id="text">
+        Mi amor,
+
+Hoy quiero expresarte lo importante que eres para mí. A pesar de los problemas que hemos enfrentado últimamente, quiero que sepas que estoy decidido a superarlos y enfrentarlos juntos. Te amo con todo mi ser y estoy dispuesto a hacer todo lo que esté a mi alcance para que nuestra relación sea fuerte y duradera.
+
+
+Quiero sorprenderte con algo especial. Esta página web en la que estás leyendo este mensaje fue creada por mí. Me esforcé mucho en aprender habilidades nuevas y complicadas para poder decirte cuánto te amo de una manera única. Quería demostrarte que estoy dispuesto a aprender y crecer por ti, porque eres una persona tan especial que merece todos los esfuerzos del mundo.
+
+Eres mi compañera, mi confidente y mi apoyo incondicional. No hay nada que no pueda enfrentar contigo a mi lado. Juntos hemos superado obstáculos antes y sé que podemos superar cualquier cosa que se interponga en nuestro camino. Confío plenamente en ti y en nuestra capacidad para resolver cualquier problema que nos desafíe.
+
+Tú, con todas tus imperfecciones y virtudes, eres la persona que quiero tener a mi lado. Me haces sentir completo y me inspiras a ser una mejor versión de mí mismo. Tu amor y tu cariño me llenan de alegría y me dan fuerzas para seguir adelante.
+
+Recuerda siempre que estoy aquí para ti, dispuesto a escucharte, comprenderte y apoyarte en cada paso que demos juntos. Nuestro amor es real y verdadero, y no importa cuán difíciles sean las circunstancias, lo superaremos juntos.
+
+Te amo más de lo que las palabras pueden expresar. Eres mi razón de ser y lucharé por nuestro amor con todo lo que tengo. Confía en mí, confía en nosotros, y juntos enfrentaremos cualquier desafío que la vida nos depare.
+
+Siempre tuyo, 
+
+Ovejita :3
+    </p>
+
+    <script>
+        const text = document.getElementById('text');
+        const textContent = text.textContent;
+        const textArray = textContent.split(' ');
+
+        text.innerHTML = '';
+
+        textArray.forEach((word, i) => {
+            const span = document.createElement('span');
+            span.innerHTML = word + ' ';
+            span.style.position = 'relative';
+            text.appendChild(span);
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const xPos = e.clientX;
+            const yPos = e.clientY;
+
+            const spans = text.getElementsByTagName('span');
+            for (let i = 0; i < spans.length; i++) {
+                const rect = spans[i].getBoundingClientRect();
+                const dist = Math.hypot(xPos - rect.left, yPos - rect.top);
+
+                if (dist < 50) {
+                    spans[i].classList.add('highlight');
+                } else {
+                    spans[i].classList.remove('highlight');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

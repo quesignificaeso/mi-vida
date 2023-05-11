@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .neon .text {
+            font-size: 60px;
+            color: #08f7fe;
+            text-shadow: 0 0 5px #08f7fe, 0 0 10px #08f7fe, 0 0 15px #08f7fe, 0 0 20px #08f7fe;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background: #1a1a1a;
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+        nav a {
+            color: #08f7fe;
+            text-decoration: none;
+            margin: 0 10px;
+            text-shadow: 0 0 5px #08f7fe;
+        }
+
+        nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #08f7fe, 0 0 15px #08f7fe;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="Contacto.html" class="nav-link">Love Dump</a>
+        <a href="reminders.html" class="nav-link">reminders</a>
+        <a href="probando-cosas.html" class="nav-link">Testing Grounds</a>
+    </nav>
+
+    <div class="neon">
+        <span class="text" id="neonText">AÑA</span>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            let text = document.getElementById('neonText');
+            const xPos = (e.clientX / window.innerWidth) - 0.5;
+            const yPos = (e.clientY / window.innerHeight) - 0.5;
+            
+            text.style.textShadow = `${-xPos*20}px ${yPos*20}px 5px #08f7fe, ${-xPos*40}px ${yPos*40}px 10px #08f7fe, ${-xPos*60}px ${yPos*60}px 15px #08f7fe, ${-xPos*80}px ${yPos*80}px 20px #08f7fe`;
+
+            let links = document.getElementsByClassName('nav-link');
+            for (let i = 0; i < links.length; i++) {
+                links[i].style.textShadow = `${xPos*10}px ${yPos*10}px 5px #08f7fe`;
+            }
+        });
+    </script>
+</body>
+</html>
